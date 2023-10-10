@@ -16,8 +16,8 @@
         <input type="text" name="contrasena">
         <br>
         <br>
-        <label> Foto: </label>
-        <input type="file" name="archivo"> 
+        <label> Rol: </label>
+        <input type="text" name="rol"> 
         <br>
         <br>
         <input type="submit" name="registrar">
@@ -26,6 +26,7 @@
 </html>
 <?php
     require_once "funcioneslogin.php";
+    require_once 'usuario.php';
 
 
     $registrar = isset($_POST['registrar']);
@@ -37,9 +38,10 @@
 
             $usuario=$_POST['nombres']?$_POST['nombres']:"";
             $contrasena = $_POST['contrasena']?$_POST['contrasena']:"";
-            $foto =$_FILES['archivo']['name']?$_FILES['archivo']['name']:"";
+            //$foto =$_FILES['archivo']['name']?$_FILES['archivo']['name']:"";
+            $rol=$_POST['rol']?$_POST['rol']:"";
 
-            if(isset($_FILES)) {
+            /*if(isset($_FILES)) {
 
                     $dirSubida = 'C:/xampp/htdocs/manolo_apruebame/imagenes/';
                     $ficheroSubido = $dirSubida . basename($_FILES['archivo']['name']);
@@ -47,16 +49,21 @@
                     $foto = file_get_contents($_FILES['archivo']['tmp_name']);
                     $foto = base64_encode($foto);
 
-                    if (move_uploaded_file($_FILES['archivo']['tmp_name'], $ficheroSubido)) { 
-                        CreaUsuario($usuario, $contrasena, $foto,'users.csv');    
+                    if (move_uploaded_file($_FILES['archivo']['tmp_name'], $ficheroSubido)) {   
 
-                        header("Location: index.php");                       
+                                               
                 
                     } 
                     else {
                         echo "Archivo NO válido.\n";
                     }
-        }
+            }*/
+
+            CreaUsuario($usuario, $contrasena, $rol,'users.csv');  
+
+            header("Location: index.php");
+
+
 
         }
     }

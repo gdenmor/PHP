@@ -4,16 +4,18 @@
     CreaSesion();
     $usuario=leer_session('user')[0];
 
-    $nombreTemp = leer_session('user')[1];
+    $password = leer_session('user')[1];
 
-    $ruta='C:/xampp/htdocs/manolo_apruebame/imagenes/';
-    $ruta=$ruta.$nombreTemp;
+    $rol=leer_session('user')[2];
+
+    //$ruta='C:/xampp/htdocs/manolo_apruebame/imagenes/';
+    //$ruta=$ruta.$nombreTemp;
 
     //esto es con las imágenes
-    $contenido=file_get_contents($ruta);
-    $txt=base64_encode($contenido);
+    //$contenido=file_get_contents($ruta);
+    //$txt=base64_encode($contenido);
 
-    echo "<img style='float: right' width=20% height=20% src='data:image/png;base64,$txt'>";
+    //echo "<img style='float: right' width=20% height=20% src='data:image/png;base64,$txt'>";
 
     //indica tipo de archivo que se quiere abrir
     //header('Content-type: application/pdf');

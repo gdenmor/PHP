@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form enctype="multipart/form-data" method="post" action="login.php?imagen=<?php echo $nombreArchivo=isset($_FILES['Archivo']['tmp_name'])?$_FILES['Archivo']['tmp_name']:"";?>">
+    <form enctype="multipart/form-data" method="post" action="login.php">
         <h1> INICIAR SESIÓN</h1>
         <br>
         <label> Usuario </label>
@@ -19,12 +19,10 @@
         <input type="password" name="contrasenia">
         <br>
         <br>
-        <label> Foto: </label>
+        <label> Rol: </label>
         <br>
         <br>
-        <input type="file" name="Archivo">
-        <br>
-        <br>
+        <input type="text" name="rol">
         <input type="submit" value="INICIAR SESIÓN" name="boton">
         <input type="submit" value="REGISTRARSE" name="registro">
     </form>

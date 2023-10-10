@@ -26,7 +26,7 @@
                 Login($usuario,'logueados.csv');
                 $user=new Usuario($usuario,$password,$rol);
                 iniciaSesion('user',$user);
-                header('Location: http://localhost/manolo_apruebame/formu.php');
+                header('Location: formu.php');
             }else{
                 header('Location: index.php');
             }

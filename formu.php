@@ -2,11 +2,13 @@
     require_once 'funcioneslogin.php';
     require_once 'session.php';
     CreaSesion();
-    $usuario=leer_session('user')[0];
+    $usuario=leer_session('user');
 
-    $password = leer_session('user')[1];
+    
 
-    $rol=leer_session('user')[2];
+
+
+    
 
     //$ruta='C:/xampp/htdocs/manolo_apruebame/imagenes/';
     //$ruta=$ruta.$nombreTemp;

@@ -1,8 +1,8 @@
 <?php
     class Usuario{
-        private $usuario;
-        private $password;
-        private $rol;
+        public $usuario;
+        public $password;
+        public $rol;
 
         public function getUsuario(){
             return $this->usuario;

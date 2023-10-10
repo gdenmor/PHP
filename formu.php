@@ -1,8 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data" action="formu.php">
+        <input style="float: right;" type="submit" value="CERRAR SESIÓN" name="cerrar">
+        <label> ID </label>
+        <input type="text" name="ID">
+        <br>
+        <br>
+        <label> Nombre </label>
+        <input type="text" name="NOMBRE">
+        <br>
+        <br>
+        <input type="submit" value="+" name="aniadir" id="aniade">
+        <input type="submit" value="-" name="borrar" id="borra">
+        <input type="submit" value="MODIFY" name="modificar" id="modifica">
+        <input type="submit" value="MUESTRA" name="muestra">
+    </form>
+</body>
+</html>
+
+<style>
+    #aniade{
+        display: none;
+    }
+    #borra{
+        display: none;
+    }
+    #modifica{
+        display: none;
+    }
+
+</style>
+
 <?php
     require_once 'funcioneslogin.php';
     require_once 'session.php';
+    require_once 'usuario.php';
     CreaSesion();
     $usuario=leer_session('user');
+
+    $user=$usuario->getUsuario();
+
+    $rol=$usuario->getRol();
+
+    if ($rol=='Invitado'){
+        echo "<style>
+                #aniade{
+                    display: none;
+                }
+                #borra{
+                    display: none;
+                }
+                #modifica{
+                    display: none;
+                }
+    
+             </style>";
+    }else{
+        echo "<style>
+                #aniade{
+                    display: block;
+                }
+                #borra{
+                    display: block;
+                }
+                #modifica{
+                    display: block;
+                }
+    
+             </style>";
+    }
+    
+
 
     
 
@@ -27,7 +101,7 @@
 
     //readfile($ruta);
 
-    if (EstaLogueado($usuario,'logueados.csv')==false){
+    if (EstaLogueado($user,'logueados.csv')==false){
         header("Location: index.php");
     }
 
@@ -114,7 +188,7 @@
 
     if ($cerrarsesion){
         if ($_SERVER['REQUEST_METHOD']=="POST"){
-            borrarDatoCSV('logueados.csv',$usuario);
+            borrarDatoCSV('logueados.csv',$user);
             Cerrar_Sesion();
         }
     }
@@ -122,28 +196,3 @@
 
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form method="post" enctype="multipart/form-data" action="formu.php">
-        <input style="float: right;" type="submit" value="CERRAR SESIÓN" name="cerrar">
-        <label> ID </label>
-        <input type="text" name="ID">
-        <br>
-        <br>
-        <label> Nombre </label>
-        <input type="text" name="NOMBRE">
-        <br>
-        <br>
-        <input type="submit" value="+" name="aniadir">
-        <input type="submit" value="-" name="borrar">
-        <input type="submit" value="MODIFY" name="modificar">
-        <input type="submit" value="MUESTRA" name="muestra">
-    </form>
-</body>
-</html>

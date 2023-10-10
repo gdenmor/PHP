@@ -13,7 +13,7 @@
     function Cerrar_Sesion() {
         if (isset($_SESSION['user'])){
             session_destroy();
-            header("Location: http://localhost/manolo_apruebame/index.php");
+            header("Location: http://localhost/PHP/index.php");
         }
     }
 

@@ -64,13 +64,13 @@
     }else{
         echo "<style>
                 #aniade{
-                    display: block;
+                    display: in-line;
                 }
                 #borra{
-                    display: block;
+                    display: in-line;
                 }
                 #modifica{
-                    display: block;
+                    display: in-line;
                 }
     
              </style>";
